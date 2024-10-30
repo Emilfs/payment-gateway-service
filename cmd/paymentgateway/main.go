@@ -10,12 +10,11 @@ import (
 	"payment-gateway-service/pkg/config"
 	"payment-gateway-service/pkg/logger"
 
-	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 )
 
 func main() {
-	cfg, err := config.LoadConfig("./pkg/config") // point to config files location
+	cfg, err := config.LoadConfig("./pkg/config") // Adjust the path as necessary
 	if err != nil {
 		log.Fatalf("Error loading configuration: %v", err)
 	}
@@ -29,14 +28,12 @@ func main() {
 	//gatewayB := &adapter.GatewayB{APIEndpoint: "http://example.com/gatewayB"}
 
 	var chosenGateway adapter.PaymentGateway
-	chosenGateway = gatewayA // TODO: Implement so that chosenGateway switch depending on the request
+	chosenGateway = gatewayA // This can be extended to choose the gateway dynamically
 
 	paymentService := service.NewPaymentService(chosenGateway)
 
-	router := gin.Default()
-	paymentHandler := api.NewPaymentHandler(paymentService)
-
-	router.POST("/payment", paymentHandler.HandlePaymentRequest)
+	// Use the SetupRouter function to initialize the router
+	router := api.SetupRouter(paymentService)
 
 	serverPort := cfg.ServerPort
 	if serverPort == "" {

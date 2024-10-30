@@ -1,0 +1,85 @@
+openapi: 3.0.0
+info:
+  title: Payment Gateway Service API
+  description: API for processing deposits and withdrawals, and handling callbacks for transaction status updates.
+  version: "1.0"
+servers:
+  - url: http://localhost:8080
+    description: Development server
+paths:
+  /payment:
+    post:
+      summary: Process a payment
+      description: Initiates a payment transaction.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentRequest'
+      responses:
+        '200':
+          description: Payment processed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentResponse'
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
+  /callback:
+    post:
+      summary: Handle transaction status callback
+      description: Receives a callback from the payment gateway with an updated transaction status.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CallbackRequest'
+      responses:
+        '200':
+          description: Callback processed successfully
+        '400':
+          description: Bad request
+        '500':
+          description: Internal server error
+components:
+  schemas:
+    PaymentRequest:
+      type: object
+      properties:
+        Amount:
+          type: number
+          format: double
+        Currency:
+          type: string
+        CustomerID:
+          type: string
+        Type:
+          type: string
+      required:
+        - Amount
+        - Currency
+        - CustomerID
+        - Type
+    CallbackRequest:
+      type: object
+      properties:
+        TransactionID:
+          type: string
+        Status:
+          type: string
+      required:
+        - TransactionID
+        - Status
+    PaymentResponse:
+      type: object
+      properties:
+        Success:
+          type: boolean
+        TransactionID:
+          type: string
+        Message:
+          type: string
