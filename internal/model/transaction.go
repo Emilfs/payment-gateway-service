@@ -15,7 +15,7 @@ type Transaction struct {
 	CreatedAt     time.Time `json:"created_at"`
 }
 
-func (t *Transaction) GetByID(trxId string) error {
+func GetByID(trxId string) error {
 	// TODO: Implement this function
 	return nil
 }

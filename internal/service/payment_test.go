@@ -16,7 +16,13 @@ func TestNewPaymentService(t *testing.T) {
 		args args
 		want *PaymentService
 	}{
-		// TODO: Add test cases.
+		{
+			name: "SUCCESS",
+			args: args{
+				gateway: &adapter.GatewayPaybro{},
+			},
+			want: &PaymentService{Gateway: &adapter.GatewayPaybro{}},
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

@@ -1,6 +1,7 @@
 package adapter
 
 import (
+	"payment-gateway-service/pkg/constants"
 	"reflect"
 	"testing"
 )
@@ -19,7 +20,26 @@ func TestGatewayPaybro_ProcessPayment(t *testing.T) {
 		want    PaymentResponse
 		wantErr bool
 	}{
-		// TODO: Add test cases.
+		{
+			name: "SUCCESS",
+			fields: fields{
+				APIEndpoint: "",
+			},
+			args: args{
+				request: PaymentRequest{
+					Amount:     100,
+					Currency:   "AED",
+					CustomerID: "1234",
+					Type:       constants.DepositPayment,
+				},
+			},
+			want: PaymentResponse{
+				Success:       true,
+				TransactionID: "1234",
+				Message:       "SUCCESS",
+			},
+			wantErr: false,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
