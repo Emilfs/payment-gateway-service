@@ -1,0 +1,70 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+*.bin
+
+# Output of the go coverage tool
+*.cover
+
+# Dependency directories (remove the comment below if you want to ignore them)
+# /vendor/
+/vendor/
+
+# Object files, static and dynamic libs (remove the comment below if you want to ignore them)
+# *.o
+# *.a
+# *.so
+
+# Logs
+*.log
+
+# Go build cache
+*.cache
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDEs and editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime
+*.sublime-workspace
+*.sublime-project
+.history
+*.code-workspace
+
+# GoLand
+.idea/
+
+# JetBrains
+*.iml
+.idea/
+
+# Visual Studio Code
+.vscode/
+
+# Dependency directories (using Go Modules)
+/go.sum
+/go.mod
+
+# Compiled Object files, Static and Dynamic libs (Shared Objects)
+*.o
+*.a
+*.so
+
+# Folders
+bin/
+obj/
