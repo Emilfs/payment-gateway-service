@@ -59,3 +59,30 @@ func TestPaymentService_ProcessPayment(t *testing.T) {
 		})
 	}
 }
+
+func TestPaymentService_HandleCallback(t *testing.T) {
+	type fields struct {
+		Gateway adapter.PaymentGateway
+	}
+	type args struct {
+		request adapter.CallbackRequest
+	}
+	tests := []struct {
+		name    string
+		fields  fields
+		args    args
+		wantErr bool
+	}{
+		// TODO: Add test cases.
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			s := &PaymentService{
+				Gateway: tt.fields.Gateway,
+			}
+			if err := s.HandleCallback(tt.args.request); (err != nil) != tt.wantErr {
+				t.Errorf("PaymentService.HandleCallback() error = %v, wantErr %v", err, tt.wantErr)
+			}
+		})
+	}
+}

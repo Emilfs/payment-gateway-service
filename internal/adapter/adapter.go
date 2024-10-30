@@ -21,6 +21,5 @@ type PaymentResponse struct {
 // Extend the PaymentGateway interface
 type PaymentGateway interface {
 	ProcessPayment(request PaymentRequest) (PaymentResponse, error)
-	ProcessWithdrawal(request PaymentRequest) (PaymentResponse, error)
 	HandleCallback(request CallbackRequest) error
 }

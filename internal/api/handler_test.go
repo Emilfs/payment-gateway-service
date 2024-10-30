@@ -51,3 +51,27 @@ func TestPaymentHandler_HandlePaymentRequest(t *testing.T) {
 		})
 	}
 }
+
+func TestPaymentHandler_HandleCallback(t *testing.T) {
+	type fields struct {
+		PaymentService *service.PaymentService
+	}
+	type args struct {
+		c *gin.Context
+	}
+	tests := []struct {
+		name   string
+		fields fields
+		args   args
+	}{
+		// TODO: Add test cases.
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			h := &PaymentHandler{
+				PaymentService: tt.fields.PaymentService,
+			}
+			h.HandleCallback(tt.args.c)
+		})
+	}
+}

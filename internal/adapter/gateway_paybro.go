@@ -30,12 +30,7 @@ func (g *GatewayPaybro) ProcessPayment(request PaymentRequest) (PaymentResponse,
 	return response, nil
 }
 
-func (g *GatewayPaybro) ProcessWithdrawal(request PaymentRequest) (PaymentResponse, error) {
-	// Similar to ProcessPayment but with withdrawal endpoint and logic
-	return PaymentResponse{}, nil
-}
-
 func (g *GatewayPaybro) HandleCallback(request CallbackRequest) error {
-	// Logic to handle callback, possibly updating transaction status in the database
+	// TODO: Consider if we want this or not
 	return nil
 }

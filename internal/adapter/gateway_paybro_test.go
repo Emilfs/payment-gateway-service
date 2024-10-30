@@ -37,3 +37,30 @@ func TestGatewayPaybro_ProcessPayment(t *testing.T) {
 		})
 	}
 }
+
+func TestGatewayPaybro_HandleCallback(t *testing.T) {
+	type fields struct {
+		APIEndpoint string
+	}
+	type args struct {
+		request CallbackRequest
+	}
+	tests := []struct {
+		name    string
+		fields  fields
+		args    args
+		wantErr bool
+	}{
+		// TODO: Add test cases.
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			g := &GatewayPaybro{
+				APIEndpoint: tt.fields.APIEndpoint,
+			}
+			if err := g.HandleCallback(tt.args.request); (err != nil) != tt.wantErr {
+				t.Errorf("GatewayPaybro.HandleCallback() error = %v, wantErr %v", err, tt.wantErr)
+			}
+		})
+	}
+}
