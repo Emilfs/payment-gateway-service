@@ -31,3 +31,13 @@ func (g *GatewaySpriet) ProcessPayment(request PaymentRequest) (PaymentResponse,
 
 	return response, nil
 }
+
+func (g *GatewaySpriet) ProcessWithdrawal(request PaymentRequest) (PaymentResponse, error) {
+	// Similar to ProcessPayment but with withdrawal endpoint and logic
+	return PaymentResponse{}, nil
+}
+
+func (g *GatewaySpriet) HandleCallback(request CallbackRequest) error {
+	// Logic to handle callback, possibly updating transaction status in the database
+	return nil
+}

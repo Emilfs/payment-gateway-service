@@ -33,3 +33,8 @@ func (s *PaymentService) ProcessPayment(request adapter.PaymentRequest) (model.T
 
 	return transaction, nil
 }
+
+func (s *PaymentService) HandleCallback(request adapter.CallbackRequest) error {
+	// Logic to update transaction status in the database based on the callback request
+	return nil
+}
